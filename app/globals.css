@@ -7,6 +7,18 @@
   --foreground: #171717;
 }
 
+input {
+  color-scheme: var(--background);
+  background-color: transparent;
+  text-align: center;
+}
+input:focus {
+  outline: none;
+  background-color: rgb(251, 255, 0);
+  color: black;
+  /* animation: blink 1s infinite; */
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -24,4 +36,24 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.t-container > div:nth-child(2n) {
+  background-color: #333;
+}
+
+@keyframes blink {
+  0% {
+    background-color: rgb(251, 255, 0);
+  }
+  50% {
+    background-color: transparent; /* Change to your desired color */
+  }
+  100% {
+    background-color: rgb(251, 255, 0);
+  }
+}
+
+.brr {
+  border: 1px solid red;
 }
