@@ -19,6 +19,7 @@ export default function Home() {
   const [data, setData] = useState(subjects)
   const [total, setTotal] = useState(0)
   const [valid, setValid] = useState(false)
+  const [grades, setGrades] = useState({})
 
 
   function clearAll() {
@@ -27,6 +28,7 @@ export default function Home() {
     setData(subjects)
     setTotal(0)
     setValid(false)
+    setGrades({});
     document.getElementsByTagName('input')[0].focus()
   }
 
@@ -84,6 +86,8 @@ export default function Home() {
             focusNext={focusNext}
             focusPrev={focusPrev}
             setData={setData}
+            grades={grades}
+            setGrades={setGrades} 
           />
         ))}
       </div>
