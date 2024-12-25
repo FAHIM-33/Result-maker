@@ -8,8 +8,8 @@ function Sub({ data, inputRef, idx, focusNext, focusPrev }) {
         const mark = e.target.value
         if (/^\d{0,2}$/.test(mark)) {
             setValue(mark);
+            document.getElementById(data.id).style.background = ''    
             if (mark.length === 2) {
-                document.getElementById(data.id).style.background = ''    
                 focusNext(idx);
             }
         } else {
