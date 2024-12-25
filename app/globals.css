@@ -16,6 +16,7 @@ input:focus {
   outline: none;
   background-color: rgb(251, 255, 0);
   color: black;
+  display: block;
   /* animation: blink 1s infinite; */
 }
 
