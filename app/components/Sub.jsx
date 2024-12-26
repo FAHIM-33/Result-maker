@@ -11,6 +11,7 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
                 ...updatedData[idx],
                 mark: mark,
                 grade: getGrade(mark),
+                gpa: getGradePoint(mark)
             };
             return updatedData;
         });
@@ -35,7 +36,6 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
 
     function getGrade(num) {
         const number = parseInt(num, 10);
-        if (isNaN(number)) return '';
         if (number >= 80) return 'A+';
         if (number >= 70) return 'A';
         if (number >= 60) return 'A-';
@@ -44,21 +44,37 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
         if (number >= 33) return 'D';
         return 'F';
     }
+    function getGradePoint(num) {
+        if (num >= 80) {
+            return 5.0; // A+
+        } else if (num >= 70) {
+            return 4.0; // A
+        } else if (num >= 60) {
+            return 3.5; // A-
+        } else if (num >= 50) {
+            return 3.0; // B
+        } else if (num >= 40) {
+            return 2.0; // C
+        } else if (num >= 33) {
+            return 1.0; // D
+        } else {
+            return 0.0; // F
+        }
+    }
 
     return (
-        <div className="w-[150px] border rounded-md overflow-hidden">
+        <div className="max-w-[120px] border rounded-md overflow-hidden">
             <h2
                 onClick={() => document.getElementById(subjectData.id).focus()}
-                className="font-bold w-full mx-auto text-center text-lg py-2 text-nowrap"
+                className="font w-full mx-auto text-center py-2"
             >
                 {subjectData.title}
             </h2>
             <div className="relative">
                 {subjectData.grade && (
                     <p
-                        className={`absolute z-10 right-2 top-1/2 -translate-y-1/2 italic font-bold text-lg text-black ${
-                            subjectData.grade === 'F' ? 'text-red-500' : ''
-                        } text-center bg-[#fafafa67] rounded-full h-8 w-8`}
+                        className={`absolute z-10 pt-[2px] right-2 top-1/2 -translate-y-1/2 italic font-bold text-lg ${subjectData.grade === 'F' ? 'bg-red-500 text-white' : 'bg-[#fafafaa1]  text-black'
+                            } text-center  rounded-full h-8 w-8`}
                     >
                         {subjectData.grade}
                     </p>

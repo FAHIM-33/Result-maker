@@ -18,6 +18,7 @@ export default function Home() {
   const inputRefs = useRef([])
   const [data, setData] = useState(subjects)
   const [total, setTotal] = useState(0)
+  const [gpa, setGpa] = useState(0)
   const [valid, setValid] = useState(false)
 
 
@@ -46,17 +47,26 @@ export default function Home() {
     const a = data.reduce((acc, curr) => {
       return acc + (parseInt(curr.mark) || 0);
     }, 0);
+
+    const points = data.reduce((acc, curr) => {
+      console.log(curr.gpa);
+      return acc + (parseFloat(curr.gpa));
+    }, 0);
+    // console.log(points, data.length);
     setTotal(a);
+    setGpa(points / data.length)
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }, [data]); 
+  }, [data]);
+  // console.log(data);
 
   useEffect(() => {
     const valiidity = data.every(sub => sub.mark !== '' && !isNaN(sub.mark * 1))
     setValid(valiidity)
   }, [data])
+
 
   useEffect(() => {
     const handleEnterKey = (e) => {
@@ -75,9 +85,9 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col justify-start items-start lg:items-center lg:justify-center min-h-screen p-4">
-
-      <div className="flex flex-wrap justify-center gap-3 t-container lg:mt-0">
+    <div className="flex flex-col justify-start items-start lg:items-center lg:justify-center min-h-screen p-2">
+      {/* flex flex-wrap */}
+      <div className="grid  grid-cols-3 lg:flex lg:flex-wrap lg:grid-cols-none justify-center gap-3 t-container lg:mt-0 mx-auto">
         {data?.map((s, idx) => (
           <Sub
             key={s.id}
@@ -93,13 +103,25 @@ export default function Home() {
 
       {
         total !== 0 ?
-          <div id="results" className="my-4 flex justify-evenly w-full lg:mt-10">
+          <div id="results" className="my-4 flex justify-center gap-8 w-full lg:mt-10">
             <p className="text-2xl">Total <span className="text-green-500">{total}</span></p>
-            <p className="text-2xl">GPA <span className="text-green-500">5.00</span></p>
+            <p className="text-2xl">GPA <span className="text-green-500">{gpa.toFixed(2)}</span></p>
           </div>
           :
           <></>
       }
+      {/* {
+          data.every(s => s.grade !== 'F') ?
+          <div id="results" className="my-4 flex justify-evenly w-full lg:mt-10">
+            <p className="text-2xl">Total <span className="text-green-500">{total}</span></p>
+            <p className="text-2xl">GPA <span className="text-green-500">{gpa.toFixed(2)}</span></p>
+          </div>
+          :
+          <div className="my-4 w-full lg:mt-10">
+            <p className="text-2xl text-center">এইটা ছাত্র, নাকি ছাত্রলীগ?</p>
+            <p className="bg-red-500 text-3xl text-center">Fail</p>
+          </div>
+      } */}
 
       <div className="flex gap-4 w-full mt-4 container lg:w-[800px] lg:mt-10 mx-auto">
         <button
@@ -113,7 +135,7 @@ export default function Home() {
           Calculate
         </button>
       </div>
-      <footer className="text-gray-600 mt-20 fixed bottom-0 text-center text-xs">
+      <footer className="text-gray-600 mt-20 fixed bottom-0 text-center text-xs container mx-auto">
         <p>
           After filling, press <span className="text-gray-400"> Enter</span> to calculate all the values
         </p>
