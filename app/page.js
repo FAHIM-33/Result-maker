@@ -106,6 +106,10 @@ export default function Home() {
           <div id="results" className="my-4 flex justify-center gap-8 w-full lg:mt-10">
             <p className="text-2xl">Total <span className="text-green-500">{total}</span></p>
             <p className="text-2xl">GPA <span className="text-green-500">{gpa.toFixed(2)}</span></p>
+            {data.filter(s => s.grade === 'F').length > 0 &&
+              <p className="text-2xl">Fail count <span className="text-red-500">{data.filter(s => s.grade === 'F').length }</span></p>
+            }
+
           </div>
           :
           <></>
