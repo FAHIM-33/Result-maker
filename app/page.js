@@ -119,7 +119,7 @@ export default function Home() {
           <div id="results" className="my-4 flex justify-evenly w-full lg:mt-10">
             <p className="text-2xl">Total <span className="text-green-500">{total}</span></p>
             <p className="text-2xl">GPA <span className="text-green-500">{gpa.toFixed(2)}</span></p>
-          </div>
+          </div>asd
           :
           <div className="my-4 w-full lg:mt-10">
             <p className="text-2xl text-center">এইটা ছাত্র, নাকি ছাত্রলীগ?</p>
