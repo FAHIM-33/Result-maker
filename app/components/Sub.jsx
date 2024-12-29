@@ -61,7 +61,7 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
             return 0.0; // F
         }
     }
-
+// asdf
     return (
         <div className="max-w-[120px] border rounded-md overflow-hidden">
             <h2
