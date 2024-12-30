@@ -4,7 +4,7 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
     function handleChange(e) {
         const mark = e.target.value;
 
-        // Update the mark and grade in the data array
+        // Update the mark and grade in the data array asdadsfa
         setData((data) => {
             const updatedData = [...data];
             updatedData[idx] = {
