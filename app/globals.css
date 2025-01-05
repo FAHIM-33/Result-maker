@@ -17,12 +17,13 @@
   }
 } */
 
-input {
+.mark-input {
   color-scheme: var(--background);
   background-color: transparent;
   text-align: center;
 }
-input:focus {
+
+.mark-input:focus {
   outline: none;
   background-color: rgb(251, 255, 0);
   color: black;
@@ -43,7 +44,7 @@ body {
   }
 }
 
-.t-container > div:nth-child(2n) {
+.t-container>div:nth-child(2n) {
   background-color: #333;
 }
 
@@ -51,9 +52,12 @@ body {
   0% {
     background-color: rgb(251, 255, 0);
   }
+
   50% {
-    background-color: transparent; /* Change to your desired color */
+    background-color: transparent;
+    /* Change to your desired color */
   }
+
   100% {
     background-color: rgb(251, 255, 0);
   }

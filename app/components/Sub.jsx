@@ -36,6 +36,7 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
 
     function getGrade(num) {
         const number = parseInt(num, 10);
+        if (!number) return ''
         if (number >= 80) return 'A+';
         if (number >= 70) return 'A';
         if (number >= 60) return 'A-';
@@ -61,7 +62,7 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
             return 0.0; // F
         }
     }
-// asdf
+    // asdf
     return (
         <div className="max-w-[120px] border rounded-md overflow-hidden">
             <h2
@@ -71,16 +72,18 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
                 {subjectData.title}
             </h2>
             <div className="relative">
-                {subjectData.grade && (
-                    <p
-                        className={`absolute z-10 pt-[2px] right-2 top-1/2 -translate-y-1/2 italic font-bold text-lg ${subjectData.grade === 'F' ? 'bg-red-500 text-white' : 'bg-[#fafafaa1]  text-black'
-                            } text-center  rounded-full h-8 w-8`}
-                    >
-                        {subjectData.grade}
-                    </p>
-                )}
+                {
+                    subjectData.grade && (
+                        <p
+                            className={`absolute z-10 pt-[2px] right-2 top-1/2 -translate-y-1/2 italic font-bold text-lg ${subjectData.grade === 'F' ? 'bg-red-500 text-white' : 'bg-[#fafafaa1]  text-black'
+                                } text-center  rounded-full h-8 w-8`}
+                        >
+                            {subjectData.grade}
+                        </p>
+                    )
+                }
                 <input
-                    className="w-full text-xl p-1 mx-auto"
+                    className="w-full text-xl p-1 mx-auto mark-input"
                     id={subjectData.id}
                     name={subjectData.name}
                     type="text"
