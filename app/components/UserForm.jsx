@@ -1,16 +1,7 @@
-import connectMongo from "@/dbConnect/connectMongo";
-import User from "@/dbConnect/models/user";
+import { addUser } from "@/Database/actions/user";
 
 function UserForm() {
-    const addUser = async (formData) => {
-        "use server"
-        const name = formData.get('name');
-        const userData = { name }
-        console.log(userData)
-        await connectMongo()
-        await new User(userData).save()
-    }
-
+   
     return (
         <form
             action={addUser}
