@@ -1,5 +1,5 @@
 const { default: connectMongo } = require("../connectMongo");
-const { default: User } = require("../models/user");
+const { default: User } = require("../models/User");
 
 const addUser = async (formData) => {
     "use server"
