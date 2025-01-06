@@ -6,7 +6,7 @@ const userScheme = new mongoose.Schema({
         min: 2,
         max: 100
     },
-    // email: { type: String }
+    // email: { type: String }asdf
 })
 
 const User = mongoose.models.User || mongoose.model('User', userScheme)
