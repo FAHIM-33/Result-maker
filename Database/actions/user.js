@@ -1,18 +1,32 @@
+"use server"
 const { default: connectMongo } = require("../connectMongo");
-const { default: User } = require("../models/User");
+const { default: Student } = require("../models/Student");
 
-const addUser = async (formData) => {
-    "use server"
-    const name = formData.get('name');
-    const userData = { name }
-    console.log(userData)
-    await connectMongo()
-    await new User(userData).save()
-}
-const getUsers = async () => {
-    await connectMongo()
-    const users = await User.find()
-    return users
-}
+// const name = formData.get('name');
+// const userData = { name }
+// await new Student(formData).save()
+const addResult = async (studentData) => {
+    // "use server"
+    console.log(studentData);
+    try {
+        // Connect to MongoDB
+        await connectMongo();
+        // Create a new student record
+        const newStudent = new Student(studentData);
+        // Save the record to MongoDB
+        await newStudent.save();
 
-export { addUser, getUsers }
+        console.log("Student result saved successfully:", newStudent);
+    } catch (error) {
+        console.error("Error saving student data:", error);
+        throw new Error("Failed to save student data");
+    }
+
+}
+// const getUsers = async () => {
+//     // await connectMongo()
+//     // const users = await Student.find()
+//     // return users
+// }
+
+export { addResult }
