@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
+import Nav from "./components/Nav";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,15 +23,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-screen-lg mx-auto`}
       >
-        <nav className="">
-          <div className="space-x-4">
-            <Link href='/all-students'>All students</Link>
-            <Link href='/calculator'>Calculator</Link>
-          </div>
-        </nav>
-        {children}
+        <Nav></Nav>
+        <main>
+          {children}
+        </main>
+        <footer className="text-gray-600 mt-20 fixed bottom-0 text-center text-xs container mx-auto">
+          <p>
+            After filling, press <span className="text-gray-400"> Enter</span> to calculate all the values
+          </p>
+          <p>A procuct of <span className="text-gray-500">Barurkandi&#8482;</span></p>
+          <p>Developed by <a href="https://www.facebook.com/shahriyerhossain.fahim/" target="_blank" className="text-blue-800">SH Fahim</a></p>
+        </footer>
       </body>
     </html>
   );

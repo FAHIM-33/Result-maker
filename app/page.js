@@ -1,18 +1,13 @@
 import { getUsers } from "@/Database/actions/user";
-import Calculator from "./components/Calculator";
 import UserForm from "./components/UserForm";
 import UserList from "./components/UserList";
-
+import Calculator from "./components/Calculator";
 
 export default function Home() {
 
 
   return (
-    <div>
-      <div>
-        <UserList></UserList>
-      </div>
-      <UserForm />
+    <div className="pt-8">
       <Calculator />
     </div>
 
