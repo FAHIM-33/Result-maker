@@ -28,7 +28,7 @@ function Calculator(props) {
         setData(subjects)
         setTotal(0)
         setValid(false)
-        document.getElementsByTagName('input')[0].focus()
+        document.getElementsByClassName('mark-input')[0].focus()
     }
 
     const focusNext = (currentIdx) => {

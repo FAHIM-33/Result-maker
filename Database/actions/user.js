@@ -11,7 +11,8 @@ const addUser = async (formData) => {
 }
 const getUsers = async () => {
     await connectMongo()
-    await User.find()
+    const users = await User.find()
+    return users
 }
 
 export { addUser, getUsers }
