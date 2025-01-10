@@ -115,7 +115,7 @@ function Calculator({ addResult }) {
             elem.focus()
             return
         }
-        setLoading(true)
+
         Swal.fire({
             title: `Save result for <span class='text-red-400'>${student}</span>?`,
             // text: 'No tention. পরে delete করতে পারবা. ভাইপুত বলে কথা...',
@@ -138,6 +138,7 @@ function Calculator({ addResult }) {
         }).then(async (result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
+                setLoading(true)
                 await addResult({
                     name: student,
                     subjects: data
@@ -146,7 +147,7 @@ function Calculator({ addResult }) {
                     setLoading(false)
                     setStudent('')
                     clearAll()
-                }).catch(err => console.log(err))
+                }).catch(err => setLoading(false))
 
             } else if (result.isDenied) {
                 Swal.fire("Result is not saved", "", "info");
