@@ -136,7 +136,7 @@ function Calculator({ addResult }) {
             confirmButtonText: "Save",
             denyButtonText: `Don't save`
         }).then(async (result) => {
-            /* Read more about isConfirmed, isDenied below */
+            /* Read more about isConfirmed, asdfisDenied below */
             if (result.isConfirmed) {
                 setLoading(true)
                 await addResult({
