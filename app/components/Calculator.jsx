@@ -70,7 +70,7 @@ function Calculator({ addResult }) {
 
     }, [data]);
 
-// asdf
+// asdf asdf
     useEffect(() => {
         const valiidity = data.every(sub => sub.mark !== '' && !isNaN(sub.mark * 1))
         setValid(valiidity)
