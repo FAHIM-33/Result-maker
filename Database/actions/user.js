@@ -6,8 +6,7 @@ const { default: Student } = require("../models/Student");
 // const userData = { name }
 // await new Student(formData).save()
 const addResult = async (studentData) => {
-    // "use server"
-    // console.log(studentData);
+    console.log(studentData);
     try {
         // Connect to MongoDB
         await connectMongo();

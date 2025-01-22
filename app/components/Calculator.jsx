@@ -70,7 +70,7 @@ function Calculator({ addResult }) {
 
     }, [data]);
 
-// asdf asdasdf asdf
+    // asdf asdasdf asdf
     useEffect(() => {
         const valiidity = data.every(sub => sub.mark !== '' && !isNaN(sub.mark * 1))
         setValid(valiidity)
@@ -141,7 +141,10 @@ function Calculator({ addResult }) {
                 setLoading(true)
                 await addResult({
                     name: student,
-                    subjects: data
+                    subjects: data,
+                    gpa: gpa,
+                    mark: total,
+                    // grade: grade
                 }).then(() => {
                     Swal.fire("Saved!", "", "success");
                     setLoading(false)
@@ -154,7 +157,6 @@ function Calculator({ addResult }) {
             }
         });
     }
-
 
 
     return (

@@ -1,6 +1,9 @@
 'use client'
 
 function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
+
+
+
     function handleChange(e) {
         const mark = e.target.value;
 
@@ -36,7 +39,7 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
 
     function getGrade(num) {
         const number = parseInt(num, 10);
-        if (!number) return ''
+        if (number === '') { return '' }
         if (number >= 80) return 'A+';
         if (number >= 70) return 'A';
         if (number >= 60) return 'A-';
@@ -46,23 +49,24 @@ function Sub({ subjectData, inputRef, idx, focusNext, focusPrev, setData }) {
         return 'F';
     }
     function getGradePoint(num) {
-        if (num >= 80) {
+        const number = parseInt(num, 10)
+        if (number >= 80) {
             return 5.0; // A+
-        } else if (num >= 70) {
+        } else if (number >= 70) {
             return 4.0; // A
-        } else if (num >= 60) {
+        } else if (number >= 60) {
             return 3.5; // A-
-        } else if (num >= 50) {
+        } else if (number >= 50) {
             return 3.0; // B
-        } else if (num >= 40) {
+        } else if (number >= 40) {
             return 2.0; // C
-        } else if (num >= 33) {
+        } else if (number >= 33) {
             return 1.0; // D
         } else {
             return 0.0; // F
         }
     }
-    // asdf
+    
     return (
         <div className="max-w-[120px] border rounded-md overflow-hidden">
             <h2

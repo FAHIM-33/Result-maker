@@ -1,6 +1,8 @@
 import React from 'react';
 
-function ULTableItem(props) {
+function ULTableItem({ student }) {
+
+
     return (
         <tr className="">
             <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
@@ -8,13 +10,13 @@ function ULTableItem(props) {
             </td>
 
             <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                Abal
+                {student?.name}
             </td>
             <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                5.00
+                {student?.gpa}
             </td>
             <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                1289
+                {student?.total}
             </td>
 
             <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
