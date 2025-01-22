@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <main>
           {children}
         </main>
-        <footer className="text-gray-600 mt-20 fixed bottom-0 text-center text-xs container mx-auto">
+        <footer className="text-gray-600 mt-20 fixed bottom-0 text-center text-xs left-0 right-0">
           <p>
             After filling, press <span className="text-gray-400"> Enter</span> to calculate all the values
           </p>

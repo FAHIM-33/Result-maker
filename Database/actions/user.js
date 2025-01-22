@@ -7,7 +7,7 @@ const { default: Student } = require("../models/Student");
 // await new Student(formData).save()
 const addResult = async (studentData) => {
     // "use server"
-    console.log(studentData);
+    // console.log(studentData);
     try {
         // Connect to MongoDB
         await connectMongo();
@@ -16,17 +16,18 @@ const addResult = async (studentData) => {
         // Save the record to MongoDB
         await newStudent.save();
 
-        console.log("Student result saved successfully:", newStudent);
+        // console.log("Student result saved successfully:", newStudent);
     } catch (error) {
         console.error("Error saving student data:", error);
         throw new Error("Failed to save student data");
     }
 
 }
-// const getUsers = async () => {
-//     // await connectMongo()
-//     // const users = await Student.find()
-//     // return users
-// }
 
-export { addResult }
+const getResulets = async () => {
+    await connectMongo()
+    const students = Student.find()
+    return students
+}
+
+export { addResult, getResulets }
