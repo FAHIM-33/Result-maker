@@ -2,7 +2,7 @@ import ULTableItem from "./ULTableItem";
 
 async function UserList() {
 
-    const response = await fetch('http://localhost:3000/api/student/all');
+    const response = await fetch(`${process.env.BASE_API}/student/all`);
     const students = await response.json()
 
     return (

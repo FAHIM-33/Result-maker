@@ -5,7 +5,7 @@ import { Toast } from "../utils/toast";
 const DeleteResultBtn = ({ id }) => {
 
     const handleDelete = async () => {
-        const response = await fetch(`http://localhost:3000/api/student/${id}`, { method: 'DELETE' })
+        const response = await fetch(`${process.env.BASE_API}/student/${id}`, { method: 'DELETE' })
         if (response.ok) {
             const data = await response.json();
             if (data.deletedCount > 0) {

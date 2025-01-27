@@ -6,6 +6,7 @@ import Sub from "./Sub";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { calculateSizeAdjustValues } from 'next/dist/server/font-utils';
 import Loading from './Loading';
+import { Toast } from '../utils/toast';
 
 const subjects = [
     { id: 1, name: 'bangla', title: 'বাংলা', mark: '', gpa: '', grade: '' },
@@ -91,18 +92,7 @@ function Calculator({ addResult }) {
         document.addEventListener('keydown', handleEnterKey)
         return () => { document.removeEventListener('keydown', handleEnterKey) }
     }, [cal, valid])
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-        }
-    });
-
+   
     function upload() {
         const elem = document.getElementById('student')
         if (!student) {
