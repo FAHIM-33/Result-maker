@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { calculateSizeAdjustValues } from 'next/dist/server/font-utils';
 import Loading from './Loading';
 import { Toast } from '../utils/toast';
+import { revalidateTag } from 'next/cache';
 
 const subjects = [
     { id: 1, name: 'bangla', title: 'বাংলা', mark: '', gpa: '', grade: '' },
@@ -140,6 +141,7 @@ function Calculator({ addResult }) {
                     setLoading(false)
                     setStudent('')
                     clearAll()
+                    revalidateTag('allStudents')
                 }).catch(err => setLoading(false))
 
             } else if (result.isDenied) {
