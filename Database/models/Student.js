@@ -8,7 +8,7 @@ const subjectSchema = new mongoose.Schema({
     gpa: { type: String, default: '' },
     grade: { type: String, default: '' }
 });
-// asdf
+
 const studentSchema = new mongoose.Schema({
     name: { type: String, required: true },
     mark: { type: String, required: true},

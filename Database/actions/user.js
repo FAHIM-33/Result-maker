@@ -2,9 +2,6 @@
 const { default: connectMongo } = require("../connectMongo");
 const { default: Student } = require("../models/Student");
 
-// const name = formData.get('name');
-// const userData = { name }
-// await new Student(formData).save()
 const addResult = async (studentData) => {
     console.log(studentData);
     try {
@@ -29,4 +26,15 @@ const getResulets = async () => {
     return students
 }
 
-export { addResult, getResulets }
+const deleteResultById = async (req, res) => {
+    const resultId = req.params.id
+    await connectMongo()
+    const result = await Student.deleteOne({ _id: resultId })
+    if (result.deletedCount === 0) {
+        return res.status(400).send({ message: 'Result not found' })
+    }
+    return res.status(200).send({ message: "Delete result", deletedCount: result.deletedCount })
+
+}
+
+export { addResult, getResulets, deleteResultById }

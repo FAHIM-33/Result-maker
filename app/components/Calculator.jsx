@@ -62,7 +62,7 @@ function Calculator({ addResult }) {
             return acc + (parseFloat(curr.gpa));
         }, 0);
         setTotal(a);
-        setGpa(points / data.length)
+        setGpa(data.some(sub => sub.grade === 'F') ? 0 : points / data.length)
         window.scrollTo({
             top: 0,
             behavior: "smooth",

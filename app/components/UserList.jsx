@@ -1,8 +1,9 @@
-import { getResulets } from "@/Database/actions/user";
 import ULTableItem from "./ULTableItem";
 
-async function UserList(props) {
-    const students = await getResulets()
+async function UserList() {
+
+    const response = await fetch('http://localhost:3000/api/student/all');
+    const students = await response.json()
 
     return (
         <div>
@@ -32,8 +33,8 @@ async function UserList(props) {
 
                     <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-700">
                         {
-                            students.map(item => 
-                                <ULTableItem student={item} key={item.id} />
+                            students?.map(item =>
+                                <ULTableItem student={item} key={item._id} />
                             )
                         }
                     </tbody>
