@@ -1,13 +1,36 @@
 "use client"
-import { deleteResultById } from '@/Database/actions/user';
-import { revalidatePath, revalidateTag } from 'next/cache';
+
+import { Toast } from "../utils/toast";
 
 const DeleteResultBtn = ({ id }) => {
-    console.log(id)
+
     const handleDelete = async () => {
-        const response = await fetch(`http://localhost:3000/api/student/${id}`, { method: 'DELETE' });
-        // revalidateTag('all-student-results')
-        revalidatePath('/all-users')
+        const response = await fetch(`http://localhost:3000/api/student/${id}`, { method: 'DELETE' })
+        if (response.ok) {
+            const data = await response.json();
+            if (data.deletedCount > 0) {
+                Toast.fire({
+                    icon: 'success',
+                    title: "Deleted Succesfully"
+                });
+            }
+            else {
+                Toast.fire(
+                    {
+                        icon: 'error',
+                        title: "Result not found"
+                    }
+                )
+            }
+        } else {
+            Toast.fire(
+                {
+                    icon: 'error',
+                    title: "Error"
+                }
+            )
+        }
+
     }
     return (
         <button

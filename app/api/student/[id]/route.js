@@ -52,7 +52,7 @@ export async function DELETE(_req, { params }) {
     await connectMongo()
     try {
         const res = await Student.deleteOne({ _id: studentId })
-        return new Response(JSON.stringify(res))
+        return new Response(JSON.stringify({ deletedCount: res.deletedCount }))
 
     } catch (error) {
         console.error('Error fetching students:', error);
