@@ -1,7 +1,7 @@
 
 import React from 'react';
 import DeleteResultBtn from './DeleteResultBtn';
-
+// 
 function ULTableItem({ student }) {
 
     return (
