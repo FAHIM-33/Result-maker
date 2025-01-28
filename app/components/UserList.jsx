@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import ULTableItem from "./ULTableItem";
+import Loading from "./Loading";
 
 function UserList({ students }) {
 
@@ -31,11 +33,13 @@ function UserList({ students }) {
                     </thead>
 
                     <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-700">
-                        {
-                            students?.map((item,idx) =>
-                                <ULTableItem idx={idx} student={item} key={item._id} />
-                            )
-                        }
+                        <Suspense fallback={<p>Loading...</p>}>
+                            {
+                                students?.map((item, idx) =>
+                                    <ULTableItem idx={idx} student={item} key={item._id} />
+                                )
+                            }
+                        </Suspense>
                     </tbody>
                 </table>
             </div>

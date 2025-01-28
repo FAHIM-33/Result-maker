@@ -30,9 +30,9 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <footer className="text-gray-600 mt-20 fixed bottom-0 text-center text-xs left-0 right-0">
-          <p>
+          {/* <p>
             After filling, press <span className="text-gray-400"> Enter</span> to calculate all the values
-          </p>
+          </p> */}
           <p>A procuct of <span className="text-gray-500">Barurkandi&#8482;</span></p>
           <p>Developed by <a href="https://www.facebook.com/shahriyerhossain.fahim/" target="_blank" className="text-blue-800">SH Fahim</a></p>
         </footer>

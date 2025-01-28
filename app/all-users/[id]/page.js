@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import DelBtn from './DelBtn';
+import Loading from '@/app/components/Loading';
 
 async function SingleResultPage({ params }) {
     const { id } = params
@@ -45,25 +46,27 @@ async function SingleResultPage({ params }) {
                 </thead>
 
                 <tbody className="text-sm divide-y divide-slate-200 dark:divide-slate-700">
-                    {
-                        student?.subjects?.map(sub =>
-                            <tr key={sub.name} className={sub.grade === 'F' ? "bg-red-500/20" : ''}>
-                                <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                    {sub.title}
-                                </td>
+                    <Suspense fallback={<Loading></Loading>}>
+                        {
+                            student?.subjects?.map(sub =>
+                                <tr key={sub.name} className={sub.grade === 'F' ? "bg-red-500/20" : ''}>
+                                    <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                        {sub.title}
+                                    </td>
 
-                                <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                                    {sub.grade}
-                                </td>
-                                <td className='px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap'>
-                                    {sub?.gpa}
-                                </td>
-                                <td className="px-2 py-3 whitespace-nowrap text-center">
-                                    {sub?.mark}
-                                </td>
-                            </tr >
-                        )
-                    }
+                                    <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                                        {sub.grade}
+                                    </td>
+                                    <td className='px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap'>
+                                        {sub?.gpa}
+                                    </td>
+                                    <td className="px-2 py-3 whitespace-nowrap text-center">
+                                        {sub?.mark}
+                                    </td>
+                                </tr >
+                            )
+                        }
+                    </Suspense>
                 </tbody>
             </table>
         </div>
