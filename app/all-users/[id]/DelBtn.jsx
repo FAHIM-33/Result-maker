@@ -1,8 +1,6 @@
 "use client"
+function DelBtn({ id }) {
 
-import { Toast } from "../utils/toast";
-
-const DeleteResultBtn = ({ id }) => {
     const handleDelete = async () => {
         const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/student/${id}`, { method: 'DELETE' })
         if (response.ok) {
@@ -31,14 +29,15 @@ const DeleteResultBtn = ({ id }) => {
         }
 
     }
+
     return (
         <button
             onClick={handleDelete}
-            className=" border-red-200  hover:border-red-400 text-rose-500 bg-rose-950/80 px-2 py-1 rounded-sm"
+            className="text-rose-500 bg-slate-800 px-2 py-1 rounded"
         >
             Delete
         </button>
     );
-};
+}
 
-export default DeleteResultBtn;
+export default DelBtn;
