@@ -2,6 +2,7 @@
 
 import connectMongo from "@/Database/connectMongo";
 import Student from "@/Database/models/Student";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export async function GET(_req, { params }) {
     await connectMongo(); // Ensure MongoDB connection
@@ -52,6 +53,7 @@ export async function DELETE(_req, { params }) {
     await connectMongo()
     try {
         const res = await Student.deleteOne({ _id: studentId })
+        revalidatePath('/all-users')
         return new Response(JSON.stringify({ deletedCount: res.deletedCount }))
 
     } catch (error) {
