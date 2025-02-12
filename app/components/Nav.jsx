@@ -7,6 +7,7 @@ function Nav(props) {
     return (
         <nav className="">
             <div className="space-x-4 text-end p-4">
+                <Link href='/about' className={`${pathName === '/about' ? 'border-b border-white  ' : ''} p-2`}>About</Link>
                 <Link href='/all-users' className={`${pathName === '/all-users' ? 'border-b border-white  ' : ''} p-2`}>All students</Link>
                 <Link href='/' className={`${pathName === '/' ? 'border-b border-white  ' : ''} p-2`}>Calculator</Link>
             </div>
